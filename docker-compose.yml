@@ -1,0 +1,19 @@
+services:
+    mongodb:
+        image: mongo
+        container_name: mango-mongodb
+        ports:
+            - '27018:27017'
+        volumes:
+            - mongo_data:/data/db
+
+    mongo-express:
+        image: mongo-express
+        container_name: mango-express
+        ports:
+            - '8081:8081'
+        environment:
+            ME_CONFIG_MONGODB_SERVER: mango-mongodb
+
+volumes:
+    mongo_data:
